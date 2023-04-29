@@ -9,13 +9,18 @@ def generate_random_string(length):
     rand_string = ''.join(random.choice(letters) for i in range(length))
     return rand_string
 
+
 class OpenAI:
   def __init__(self, api_key):
     openai.api_key = constants.OPENAI_API
     self.history = []
     self.params = []
+    
+    
   def set_params(self, params):
     self.params = params
+    
+    
   def get_response(self, message):
     num = 0
     history_message = "\n".join(self.params) + '\n' + "\n".join(self.history) + "\n"
