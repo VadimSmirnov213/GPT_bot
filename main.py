@@ -10,19 +10,25 @@ bot = telebot.TeleBot(constants.TELEGRAM_BOT_API)
 users = {}
 select_params = False
 
+
 class StoppableThread():
     def __init__(self,  bot, chat_id):
         self.stop_flag = threading.Event()
         threading.Thread(target=self.typing_func, args=(bot, chat_id,)).start()
         self.bot = bot
         self.chat_id = chat_id
+        
+        
     def stop(self):
         self.stop_flag.set()
+        
+        
     def typing_func(self, bot, chat_id):
       while not self.stop_flag.is_set():
         bot.send_chat_action(chat_id, 'typing')
         time.sleep(3)
 
+        
 @bot.message_handler()
 def url(message):
     global select_params
