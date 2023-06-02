@@ -49,7 +49,7 @@ def url(message):
           users[user_id].set_params(['Не нужно дополнять мои фразы, пока я не попрошу.\n'] + params_arr)
           print(params_arr)
         except:
-          bot.send_message(message.from_user.id, "Введи нормально, тварь")
+          bot.send_message(message.from_user.id, "Введи нормально")
 
       select_params = not select_params
 
